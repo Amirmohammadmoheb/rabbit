@@ -2,7 +2,6 @@
 import Image from "next/image"
 import { useEffect, useState } from "react";
 export default function Home(){
-  const topPlayers:{name:string;profit:number;img:string}[] = [{name:"<Amir/>",profit:(((Date.parse("2025-10-06T03:56:00")-Date.now())*-1)*0.0000003).toFixed(0),img:"/IMG_20251114_010653_926.jpg"},{name:"Trex",profit:(((Date.parse("2025-10-09T03:56:00")-Date.now())*-1)*0.0000003).toFixed(0),img:"/IMG_20251114_022119_296.jpg"}]
   const [text,setText] = useState("")
   const rText:string = "Rabbit is a strong"
   const [under,setUnder] = useState(false)
