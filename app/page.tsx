@@ -1,65 +1,62 @@
-import Image from "next/image";
+"use client"
+import Image from "next/image"
+import { useEffect, useState } from "react";
+export default function Home(){
+  const topPlayers:{name:string;profit:number;img:string}[] = [{name:"<Amir/>",profit:(((Date.parse("2025-10-06T03:56:00")-Date.now())*-1)*0.0000003).toFixed(0),img:"/IMG_20251114_010653_926.jpg"},{name:"Trex",profit:(((Date.parse("2025-10-09T03:56:00")-Date.now())*-1)*0.0000003).toFixed(0),img:"/IMG_20251114_022119_296.jpg"}]
+  const [text,setText] = useState("")
+  const rText:string = "Rabbit is a strong"
+  const [under,setUnder] = useState(false)
+  useEffect(()=>{
+    for(let i = 0;i<rText.length;i++){
+      setTimeout(()=>{
+        setText(prev=>prev+rText[i])
+      },i*200)
+      
+    }
+  },[])
+  useEffect(()=>{
+    setInterval(()=>{
+      setUnder(prev=>!prev)
+    },400)
+  },[])
 
-export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+  function Way(props:{name:string;img:string}){
+    return(
+      <div id="interactButton" className="flex bg-[#1f1f1f] w-72 justify-start p-2 items-center h-12 rounded-md gap-2">
+        <div>
+          <Image src={props.img} alt={props.name} width={30} height={30}/>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <h2 className="small text-2xl">{props.name}</h2>
+      </div>
+    )
+  }
+
+  return(
+    <>
+      <h1 className="big text-6xl mt-10">Rabbit</h1>
+      <p className="big text-red-500 text-2xl text-center p-2 rounded-2xl mt-2 mx-auto w-fit" style={{backgroundColor:"#1b1b1b"}}>follow the rabbit for TON</p>
+      <p className="small text-2xl text-center mx-5 mt-5">A time-based project supported by the Rabbit Academy, Element Division.</p>
+      <p className="small text-2xl text-center mx-5 mt-2">Earn TON by following the rabbit, and increase your progress rate by inviting your friends.</p>
+      <h1 className="text-2xl big mt-5 text-red-500">{text} {<span style={{color:under?"white":"#0b0b0b"}}>|</span>}</h1>
+      <div className="flex flex-wrap justify-between mx-2 md:mx-12 mt-5">
+        <div className="bg-[#1f1f1f] rounded-2xl w-full h-auto py-5 md:w-[45%]">
+          <h1 className="big text-2xl text-green-400">take profit</h1>
+          <h2 className="small text-2xl ml-10">Enter Referral Code:</h2>
+          <div className="flex flex-col justify-center w-[80%] mx-auto items-center gap-5">
+            <input className="border-2 border-cyan-500 rounded-md w-full h-10 text-2xl text-center bg-cyan-900 big opacity-70"/>
+            <button id="interactButton" className="big text-2xl bg-cyan-400 w-36 h-12 rounded-md hover:scale-110 transition-transform duration-500">TAKE COIN</button>
+          </div>
         </div>
-      </main>
-    </div>
-  );
+        <div className="w-full md:w-[45%]">
+          <h1 className="big text-cyan-400 text-2xl">start game</h1>
+          <h2 className="text-xl text-red-500 big">1 - Login</h2>
+          <div className="ml-5 flex flex-col gap-2">
+            <Way img="/search.png" name="Countione with google"/>
+            <Way img="/plus.png" name="Add new account"/>
+            <Way img="/wallet.png" name="Countione with wallet"/>
+          </div>
+        </div>
+      </div>
+    </>
+  )
 }
